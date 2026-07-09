@@ -1,0 +1,49 @@
+[project]
+name = "agent-stack"
+dynamic = ["version"]
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "BytemanD", email = "byteman.e@outlook.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pystonic==0.2.1",
+]
+
+[project.scripts]
+agentstack = "agent_stack.cmd.agent_stack:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.6",
+]
+
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+pystonic = { index = "testpypi" }
+
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_stack"]
+
+[[tool.uv.index]]
+name = "tencent"
+url = "http://mirrors.cloud.tencent.com/pypi/simple"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
+
