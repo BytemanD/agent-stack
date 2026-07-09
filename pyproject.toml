@@ -1,7 +1,7 @@
 [project]
 name = "agent-stack"
 dynamic = ["version"]
-description = "Add your description here"
+description = "Distributed AI Agent management platform"
 readme = "README.md"
 authors = [
     { name = "BytemanD", email = "byteman.e@outlook.com" }
@@ -12,10 +12,17 @@ dependencies = [
     "pystonic==0.2.1",
     "rich>=15.0.0",
     "sqlmodel>=0.0.39",
+    "uvicorn[standard]>=0.34.0",
+    "httpx>=0.28.0",
+    "typer>=0.15.0",
+    "psutil>=7.0.0",
 ]
 
 [project.scripts]
 agentstack = "agent_stack.cmd.agent_stack:main"
+agentstack-master = "agent_stack.cmd.serve:master"
+agentstack-scheduler = "agent_stack.cmd.serve:scheduler"
+agentstack-node = "agent_stack.cmd.serve:node"
 
 [dependency-groups]
 dev = [
@@ -48,5 +55,3 @@ name = "testpypi"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
-
-
